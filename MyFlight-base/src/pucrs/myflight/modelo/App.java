@@ -9,10 +9,17 @@ public class App {
 
 	public static void main(String[] args) {
 
-		ArrayList<Voo> voos = new ArrayList<>();
+		GerenciadorAeronaves gAeronaves = new GerenciadorAeronaves();
+		GerenciadorAeroportos gAeroportos = new GerenciadorAeroportos();
+		GerenciadorCias gCias = new GerenciadorCias();
+		GerenciadorRotas gRotas = new GerenciadorRotas();
+		GerenciadorVoos gVoos = new GerenciadorVoos();
 
-		System.out.println();
-
+		// Consulta 1
+         
+		ArrayList<Voo> lista = new ArrayList<>();
+		
+		
 	}
 
 }
