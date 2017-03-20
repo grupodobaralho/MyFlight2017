@@ -5,6 +5,11 @@ import java.time.LocalDateTime;
 
 public class Voo {
 	
+	@Override
+	public String toString() {
+		return "Voo [datahora=" + datahora + ", duracao=" + duracao + ", rota=" + rota + ", status=" + status + "]";
+	}
+
 	public enum Status { CONFIRMADO, ATRASADO, CANCELADO };
 	
 	private LocalDateTime datahora;
