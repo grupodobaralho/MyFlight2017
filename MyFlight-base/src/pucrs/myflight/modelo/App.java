@@ -8,7 +8,15 @@ import pucrs.myflight.modelo.Voo.Status;
 
 public class App {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) {	
+		
+		//**********************************************************************************************************
+		//GERENCIADORES		
+		GerenciadorAeronaves gerAeronaves = new GerenciadorAeronaves();
+		GerenciadorCias gerCias = new GerenciadorCias();
+		GerenciadorAeroportos gerAeroportos = new GerenciadorAeroportos();		
+		GerenciadorRotas gerRotas = new GerenciadorRotas();
+		GerenciadorVoos gerVoos = new GerenciadorVoos();
 		
 		//**********************************************************************************************************
 		//Companhias Aéreas
@@ -18,6 +26,11 @@ public class App {
 		CiaAerea gol = new CiaAerea("G3", "Gol Linhas Aéreas SA");
 		CiaAerea tap = new CiaAerea("TP", "TAP Portugal");
 		CiaAerea azul = new CiaAerea("AD", "Azul Linhas Aéreas");
+		
+		gerCias.adicionar(latam);
+		gerCias.adicionar(gol);
+		gerCias.adicionar(tap);
+		gerCias.adicionar(azul);
 	
 		//**********************************************************************************************************
 		//Aeronaves
@@ -27,6 +40,11 @@ public class App {
 		Aeronave boeing737_700 = new Aeronave("73G","Boeing 737-700",126);
 		Aeronave airbusA380 = new Aeronave("380","Airbus Industrie A380",644);
 		Aeronave boeing767_400 = new Aeronave("764","Boeing 767-400",304);
+		
+		gerAeronaves.adicionar(boeing733_300);
+		gerAeronaves.adicionar(boeing737_700);
+		gerAeronaves.adicionar(airbusA380);
+		gerAeronaves.adicionar(boeing767_400);
 		
 		//**********************************************************************************************************
 		//Aeroportos
@@ -42,6 +60,11 @@ public class App {
 		Aeroporto lis = new Aeroporto("LIS","Lisbon", geo3);
 		Aeroporto mia = new Aeroporto("MIA","Miami International Apt", geo4);
 		
+		gerAeroportos.adicionar(poa);
+		gerAeroportos.adicionar(gru);
+		gerAeroportos.adicionar(lis);
+		gerAeroportos.adicionar(mia);		
+		
 		//**********************************************************************************************************
 		//Rotas
 		//Uma rota é identificada por uma companhia aérea, aeroporto de origem, aeroporto de destino e aeronave:
@@ -50,6 +73,11 @@ public class App {
 		Rota rota2 = new Rota(gol,poa,gru,boeing733_300);
 		Rota rota3 = new Rota(tap,mia,lis,airbusA380);
 		Rota rota4 = new Rota(latam,gru,mia,boeing767_400);
+		
+		gerRotas.adicionar(rota1);
+		gerRotas.adicionar(rota2);
+		gerRotas.adicionar(rota3);
+		gerRotas.adicionar(rota4);
 		
 		//**********************************************************************************************************
 		//Voos
@@ -66,7 +94,14 @@ public class App {
 		Voo voo2 = new Voo(rota4, localDateTime2, duracao2); 
 		voo2.setStatus(Status.CONFIRMADO);
 		Voo voo3 = new Voo(rota3, localDateTime3, duracao2); 
-		voo3.setStatus(Status.CANCELADO);
+		voo3.setStatus(Status.CANCELADO);	
+		
+		gerVoos.adicionar(voo1);
+		gerVoos.adicionar(voo2);
+		gerVoos.adicionar(voo3);
+		
+		//##########################################################################################################
+		//
 		
 		
 		//**********************************************************************************************************
