@@ -17,15 +17,13 @@ public class GerenciadorRotas {
 	public ArrayList<Rota> listarTodas(){
 		return rotas;
 	}
-//	
-//	public Aeronave buscarPorCodigo(Aeroporto orig){
-//		for(Aeroporto a : aeronaves){
-//			if(a.getCodigo().equals(cod))
-//				return a;
-//		}
-//		return null;
-//	}
 	
-		
+	public ArrayList<Rota> buscarPorOrigem(Aeroporto orig){
+		ArrayList<Rota> lista = new ArrayList<>();
+		for(Rota a : rotas){
+			a.getOrigem().equals(orig);
+		}
+		return lista;		
+	}	
 
 }
