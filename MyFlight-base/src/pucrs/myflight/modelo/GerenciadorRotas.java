@@ -17,7 +17,7 @@ public class GerenciadorRotas {
 		rotas.add(aviao);
 	}
 
-	public ArrayList listarTodas() {
+	public ArrayList<Rota> listarTodas() {
 
 		return rotas;
 
