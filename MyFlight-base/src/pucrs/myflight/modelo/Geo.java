@@ -1,6 +1,11 @@
 package pucrs.myflight.modelo;
 
 public class Geo {
+	@Override
+	public String toString() {
+		return "Geo [latitude=" + latitude + ", longitude=" + longitude + "]";
+	}
+
 	private double latitude;
 	private double longitude;
 	

@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.ArrayList;
-import java.util.Scanner;
+
 
 import pucrs.myflight.modelo.Voo.Status;
 
@@ -13,7 +13,7 @@ public class App {
 
 	public static void main(String[] args) {
 
-		Scanner type = new Scanner(System.in);
+		
 		GerenciadorAeronaves gerAeronaves = new GerenciadorAeronaves();
 		GerenciadorAeroportos gerAeroportos = new GerenciadorAeroportos();
 		GerenciadorCias gerCias = new GerenciadorCias();
@@ -24,18 +24,20 @@ public class App {
 		CiaAerea gol = new CiaAerea("G3", "Gol Linhas Aéreas SA");
 		CiaAerea tap = new CiaAerea("TP", "TAP Portugal");
 		CiaAerea azul = new CiaAerea("AD", "Azul Linhas Aéreas");
+		CiaAerea aair = new CiaAerea("AA", "AmericanAirlines");
 
 		gerCias.adicionar(latam);
 		gerCias.adicionar(gol);
 		gerCias.adicionar(tap);
 		gerCias.adicionar(azul);
+		gerCias.adicionar(aair);
 
 		// **********************************************************************************************************
 		// Aeronaves
 		// As aeronaves são identificadas por um código, uma descrição e uma
 		// capacidade de passageiros:
 
-		Aeronave boeing733_300 = new Aeronave("733", "Boeing 737-300", 140);
+		Aeronave boeing733_300 = new Aeronave("733", "Boeing 733-300", 140);
 		Aeronave boeing737_700 = new Aeronave("73G", "Boeing 737-700", 126);
 		Aeronave airbusA380 = new Aeronave("380", "Airbus Industrie A380", 644);
 		Aeronave boeing767_400 = new Aeronave("764", "Boeing 767-400", 304);
@@ -105,8 +107,7 @@ public class App {
 		// Consulta 1
 
 		ArrayList<Voo> lista = new ArrayList<>(gerVoos.listarTodos());
-		System.out.println("Informe o código:");
-		String codigo = type.nextLine();
+		String codigo = "GRU";
 		for (Voo v : lista) {
 			if (v.getRota().getOrigem().getCodigo().equals(codigo)) {
 				System.out.println(v.toString());
@@ -115,12 +116,25 @@ public class App {
 
 		}
 
-		//Consulta 2
-		
-		
-		
-		
-		
-	}
+		// Consult 2 //Implementar desafio
+		ArrayList<Rota> lista2 = new ArrayList<>(gerRotas.listarTodas());
+		String codigo2 = "G3";
+		for (Rota r : lista2) {
+			if (r.getCia().getCodigo().equals(codigo2))
+				System.out.println(r.getDestino().getLocal().toString() + r.getOrigem().getLocal().toString());
+		}
 
+		// Consulta 3 //Implementar desafio
+
+		ArrayList<Rota> lista3 = new ArrayList<>(gerRotas.listarTodas());
+
+		String tipoDeAviao = "733";
+
+		for (Rota r : lista3) {
+
+			if (r.getAeronave().getCodigo().equals(tipoDeAviao))
+				System.out.println(r.getCia().getNome());
+
+		}
+	}
 }

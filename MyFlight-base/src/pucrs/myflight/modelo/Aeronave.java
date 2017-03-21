@@ -8,6 +8,7 @@ public class Aeronave {
 	public Aeronave(String codigo, String descricao, int capacidade) {
 		this.codigo = codigo;
 		this.descricao = descricao;
+		this.capacidade = capacidade;
 
 	}
 
