@@ -2,7 +2,6 @@ package pucrs.myflight.modelo;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.time.Month;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -87,13 +86,13 @@ public class App {
 		gerRotas.adicionar(rota3);
 		gerRotas.adicionar(rota4);
 
-		// **********************************************************************************************************
+		// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 		// Voos
 		// Um vôo é descrito por uma data e horário, duração, rota e estado
 		// (confirmado, atrasado ou cancelado):
-		LocalDateTime localDateTime1 = LocalDateTime.of(2016, Month.AUGUST, 10, 8, 0);
-		LocalDateTime localDateTime2 = LocalDateTime.of(2016, Month.AUGUST, 10, 15, 0);
-		LocalDateTime localDateTime3 = LocalDateTime.of(2016, Month.AUGUST, 15, 12, 0);
+		LocalDateTime localDateTime1 = LocalDateTime.of(2016, 8, 10, 8, 0);
+		LocalDateTime localDateTime2 = LocalDateTime.of(2016, 8, 10, 15, 0);
+		LocalDateTime localDateTime3 = LocalDateTime.of(2016, 8, 15, 12, 0);
 
 		Duration duracao1 = Duration.ofMinutes(90);
 		Duration duracao2 = Duration.ofMinutes(120);
