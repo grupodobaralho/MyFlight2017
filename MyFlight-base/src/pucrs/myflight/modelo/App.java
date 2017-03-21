@@ -113,13 +113,13 @@ public class App {
 
 		
 		// ATIVIDADE - EXERCÍCIO PRÁTICO (1)
-//		ArrayList<Voo> lista1 = new ArrayList<>(gerVoos.listarTodos());
-//		System.out.println("Informe o código do aeroporto:");
-//		String codigo = in.nextLine();
-//		for (Voo a : lista1) {
-//			if (a.getRota().getOrigem().getCodigo().equals(codigo))
-//				System.out.println(a.toString());
-//		}
+		ArrayList<Voo> lista1 = new ArrayList<>(gerVoos.listarTodos());
+		System.out.println("Informe o código do aeroporto:");
+		String codigo = in.nextLine();
+		for (Voo a : lista1) {
+			if (a.getRota().getOrigem().getCodigo().equals(codigo))
+				System.out.println(a.toString());
+		}
 		
 		
 		

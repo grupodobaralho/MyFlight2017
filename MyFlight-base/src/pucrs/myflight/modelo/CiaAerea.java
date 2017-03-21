@@ -1,6 +1,7 @@
 package pucrs.myflight.modelo;
 
 public class CiaAerea {
+
 	private String codigo;
 	private String nome;
 	
@@ -16,4 +17,10 @@ public class CiaAerea {
 	public String getNome() {
 		return nome;
 	}	
+	
+	@Override
+	public String toString() {
+		return "CiaAerea [codigo=" + codigo + ", nome=" + nome + "]";
+	}
+	
 }
