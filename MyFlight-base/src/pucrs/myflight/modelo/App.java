@@ -1,3 +1,4 @@
+//Hidden test
 package pucrs.myflight.modelo;
 
 import java.time.Duration;
