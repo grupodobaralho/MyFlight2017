@@ -15,5 +15,10 @@ public class CiaAerea {
 	
 	public String getNome() {
 		return nome;
+	}
+
+	
+	public String toString() {
+		return "CiaAerea [codigo=" + codigo + ", nome=" + nome + "]";
 	}	
 }

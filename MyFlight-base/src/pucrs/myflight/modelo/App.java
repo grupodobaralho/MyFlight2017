@@ -1,19 +1,14 @@
 package pucrs.myflight.modelo;
 
 import java.time.Duration;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.Month;
 import java.util.ArrayList;
-
-
 import pucrs.myflight.modelo.Voo.Status;
 
 public class App {
 
 	public static void main(String[] args) {
 
-		
 		GerenciadorAeronaves gerAeronaves = new GerenciadorAeronaves();
 		GerenciadorAeroportos gerAeroportos = new GerenciadorAeroportos();
 		GerenciadorCias gerCias = new GerenciadorCias();
@@ -24,13 +19,16 @@ public class App {
 		CiaAerea gol = new CiaAerea("G3", "Gol Linhas Aéreas SA");
 		CiaAerea tap = new CiaAerea("TP", "TAP Portugal");
 		CiaAerea azul = new CiaAerea("AD", "Azul Linhas Aéreas");
-		CiaAerea aair = new CiaAerea("AA", "AmericanAirlines");
-
+		CiaAerea american= new CiaAerea("AA", "American Airlines");
+		CiaAerea airfrance = new CiaAerea("AF", "Air France");
+		
+				
 		gerCias.adicionar(latam);
 		gerCias.adicionar(gol);
 		gerCias.adicionar(tap);
 		gerCias.adicionar(azul);
-		gerCias.adicionar(aair);
+		gerCias.adicionar(american);
+		gerCias.adicionar(airfrance);
 
 		// **********************************************************************************************************
 		// Aeronaves
@@ -41,11 +39,17 @@ public class App {
 		Aeronave boeing737_700 = new Aeronave("73G", "Boeing 737-700", 126);
 		Aeronave airbusA380 = new Aeronave("380", "Airbus Industrie A380", 644);
 		Aeronave boeing767_400 = new Aeronave("764", "Boeing 767-400", 304);
+		Aeronave boeing747_8 = new Aeronave("747", "Boeing 747-8", 386);
+		Aeronave airbusA330 = new Aeronave("330", "Airbus A330-203", 293 );
 
 		gerAeronaves.adicionar(boeing733_300);
 		gerAeronaves.adicionar(boeing737_700);
 		gerAeronaves.adicionar(airbusA380);
 		gerAeronaves.adicionar(boeing767_400);
+		gerAeronaves.adicionar(boeing747_8);
+		gerAeronaves.adicionar(airbusA330);
+		
+		
 
 		// **********************************************************************************************************
 		// Aeroportos
@@ -56,12 +60,15 @@ public class App {
 		Geo geo2 = new Geo(-23.4356, -46.4731);
 		Geo geo3 = new Geo(38.7742, -9.1342);
 		Geo geo4 = new Geo(25.7933, -80.2906);
+		Geo geo5 = new Geo(-20.2566, -40.2861);
 
 		Aeroporto poa = new Aeroporto("POA", "Salgado Filho Intl Apt", geo1);
 		Aeroporto gru = new Aeroporto("GRU", "São Paulo Guarulhos Intl Apt", geo2);
 		Aeroporto lis = new Aeroporto("LIS", "Lisbon", geo3);
 		Aeroporto mia = new Aeroporto("MIA", "Miami International Apt", geo4);
-
+		Aeroporto vix = new Aeroporto("VIX", "Eurico de Aguiar Salles", geo5);
+		
+		gerAeroportos.adicionar(vix);
 		gerAeroportos.adicionar(poa);
 		gerAeroportos.adicionar(gru);
 		gerAeroportos.adicionar(lis);
@@ -76,22 +83,27 @@ public class App {
 		Rota rota2 = new Rota(gol, poa, gru, boeing733_300);
 		Rota rota3 = new Rota(tap, mia, lis, airbusA380);
 		Rota rota4 = new Rota(latam, gru, mia, boeing767_400);
+		Rota rota5 = new Rota(american, vix, mia, boeing747_8);
 
 		gerRotas.adicionar(rota1);
 		gerRotas.adicionar(rota2);
 		gerRotas.adicionar(rota3);
 		gerRotas.adicionar(rota4);
+		gerRotas.adicionar(rota5);
 
 		// **********************************************************************************************************
 		// Voos
 		// Um vôo é descrito por uma data e horário, duração, rota e estado
 		// (confirmado, atrasado ou cancelado):
-		LocalDateTime localDateTime1 = LocalDateTime.of(2016, Month.AUGUST, 10, 8, 0);
-		LocalDateTime localDateTime2 = LocalDateTime.of(2016, Month.AUGUST, 10, 15, 0);
-		LocalDateTime localDateTime3 = LocalDateTime.of(2016, Month.AUGUST, 15, 12, 0);
+		LocalDateTime localDateTime1 = LocalDateTime.of(2016, 8, 10, 8, 0);
+		LocalDateTime localDateTime2 = LocalDateTime.of(2016, 8, 10, 15, 0);
+		LocalDateTime localDateTime3 = LocalDateTime.of(2016, 8, 15, 12, 0);
+		LocalDateTime localDateTime4 = LocalDateTime.of(2017, 7, 23, 1, 0);
 
 		Duration duracao1 = Duration.ofMinutes(90);
 		Duration duracao2 = Duration.ofMinutes(120);
+		Duration duracao3 = Duration.ofMinutes(620);
+		
 
 		Voo voo1 = new Voo(rota2, localDateTime1, duracao1);
 		voo1.setStatus(Status.ATRASADO);
@@ -99,6 +111,9 @@ public class App {
 		voo2.setStatus(Status.CONFIRMADO);
 		Voo voo3 = new Voo(rota3, localDateTime3, duracao2);
 		voo3.setStatus(Status.CANCELADO);
+		Voo voo4 = new Voo(rota5, localDateTime4, duracao3);
+		voo4.setStatus(Status.CONFIRMADO);
+		gerVoos.adicionar(voo4);
 
 		gerVoos.adicionar(voo1);
 		gerVoos.adicionar(voo2);
@@ -116,25 +131,56 @@ public class App {
 
 		}
 
-		// Consult 2 //Implementar desafio
+		System.out.println();
+		// Consult 2 //Desafio implementado
 		ArrayList<Rota> lista2 = new ArrayList<>(gerRotas.listarTodas());
+		ArrayList<Geo> listaAux = new ArrayList<>();
 		String codigo2 = "G3";
-		for (Rota r : lista2) {
-			if (r.getCia().getCodigo().equals(codigo2))
-				System.out.println(r.getDestino().getLocal().toString() + r.getOrigem().getLocal().toString());
-		}
 
-		// Consulta 3 //Implementar desafio
+		for (Rota r : lista2) {
+			if (r.getCia().getCodigo().equals(codigo2)) {
+				Geo loc1 = r.getDestino().getLocal();
+				Geo loc2 = r.getOrigem().getLocal();
+
+				if (!listaAux.contains(loc1)) {
+					listaAux.add(loc1);
+
+					if (!listaAux.contains(loc2))
+						listaAux.add(loc2);
+				}
+			}
+
+		}
+		if (!listaAux.isEmpty()) {
+			for (Geo g : listaAux) {
+
+				System.out.println(g.toString());
+			}
+		} else
+			System.out.println("Não existem resultados para sua pesquisa!");
+		System.out.println();
+		// Consulta 3 //Desafio implementado
 
 		ArrayList<Rota> lista3 = new ArrayList<>(gerRotas.listarTodas());
+		ArrayList<CiaAerea> aux = new ArrayList<>();
 
-		String tipoDeAviao = "733";
-
+		String codAviao = "733";
 		for (Rota r : lista3) {
+			if (r.getAeronave().getCodigo().equals(codAviao)) {
 
-			if (r.getAeronave().getCodigo().equals(tipoDeAviao))
-				System.out.println(r.getCia().getNome());
+				if (!aux.contains(r.getCia()))
+					aux.add(r.getCia());
+
+			}
 
 		}
+		if (!aux.isEmpty()) {
+			for (CiaAerea c : aux) {
+
+				System.out.println(c.getNome());
+			}
+		} else
+			System.out.println("Não existem resultados para sua pesquisa!");
+
 	}
 }

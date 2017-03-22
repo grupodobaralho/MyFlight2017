@@ -1,6 +1,7 @@
 package pucrs.myflight.modelo;
 
 public class Aeronave {
+
 	private String codigo;
 	private String descricao;
 	private int capacidade;
@@ -22,5 +23,10 @@ public class Aeronave {
 
 	public String getDescricao() {
 		return descricao;
+
+	}
+
+	public String toString() {
+		return "Aeronave [codigo=" + codigo + ", descricao=" + descricao + ", capacidade=" + capacidade + "]";
 	}
 }

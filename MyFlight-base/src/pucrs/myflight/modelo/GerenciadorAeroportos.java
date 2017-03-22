@@ -1,6 +1,5 @@
 package pucrs.myflight.modelo;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class GerenciadorAeroportos {
@@ -17,21 +16,21 @@ public class GerenciadorAeroportos {
 		aeroportos.add(aero);
 
 	}
-	
-	public ArrayList<Aeroporto> listarTodos(){
-		
+
+	public ArrayList<Aeroporto> listarTodos() {
+
 		return aeroportos;
 	}
-	
+
 	public Aeroporto buscaPorCodigo(String cod) {
-		
-		for(Aeroporto a: aeroportos) {
-			
-			if(a.getCodigo().equals(cod)) 
-				return a; 
+
+		for (Aeroporto a : aeroportos) {
+
+			if (a.getCodigo().equals(cod))
+				return a;
 		}
-		
+
 		return null;
-		
+
 	}
 }
