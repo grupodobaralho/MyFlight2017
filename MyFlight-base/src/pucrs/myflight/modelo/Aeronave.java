@@ -1,31 +1,32 @@
 package pucrs.myflight.modelo;
 
 public class Aeronave {
-	@Override
-	public String toString() {
-		return "Aeronave [codigo=" + codigo + ", descricao=" + descricao + ", capacidade=" + capacidade + "]";
-	}
 
 	private String codigo;
 	private String descricao;
 	private int capacidade;
-	
+
 	public Aeronave(String codigo, String descricao, int capacidade) {
 		this.codigo = codigo;
 		this.descricao = descricao;
 		this.capacidade = capacidade;
 	}
-	
+
 	public String getCodigo() {
 		return codigo;
 	}
-	
+
 	public String getDescricao() {
 		return descricao;
 	}
-	
-	public int getCapacidade(){
+
+	public int getCapacidade() {
 		return capacidade;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Aeronave [codigo=" + codigo + ", descricao=" + descricao + ", capacidade=" + capacidade + "]";
+	}
+
 }
