@@ -150,22 +150,22 @@ public class App {
 
 		// DESAFIO
 		ArrayList<Rota> lista2 = new ArrayList<>(gerRotas.listarTodas());
-		ArrayList<Geo> geoAux = new ArrayList<>();
+		ArrayList<Aeroporto> aeroAux = new ArrayList<>();
 		String codigo2 = "G3";
 		for (Rota r : lista2) {
 			if (r.getCia().getCodigo().equals(codigo2)) {
-				Geo loc1 = r.getDestino().getLocal();
-				Geo loc2 = r.getOrigem().getLocal();
-				if (!geoAux.contains(loc1)) {
-					geoAux.add(loc1);
+				Aeroporto loc1 = r.getDestino();
+				Aeroporto loc2 = r.getOrigem();
+				if (!aeroAux.contains(loc1)) {
+					aeroAux.add(loc1);
 				}
-				if (!geoAux.contains(loc2)) {
-					geoAux.add(loc2);
+				if (!aeroAux.contains(loc2)) {
+					aeroAux.add(loc2);
 				}
 			}
 		}
-		if (!geoAux.isEmpty()) {
-			for (Geo a : geoAux) {
+		if (!aeroAux.isEmpty()) {
+			for (Aeroporto a : aeroAux) {
 				System.out.println(a.toString());
 			}
 		} else {
@@ -190,6 +190,28 @@ public class App {
 		} else {
 			System.out.println("Não existem companhias que utlizam a Aeronave Informada!");
 		}
+		
+		
+		
+		
+		System.out.println("\n\n\n");
+		
+		
+		
+		
+		// ##########################################################################################################
+		//MAIS EXERCÍCIOS
+		
+		//1 - Operar um relatório de uso de aeroporto
+		//ArrayList<Voo> lista4 = new ArrayList<>(gerVoos.listarTodos());
+		
+		//2 - Calcular a distancia entre dois aeroportos informados
+		
+		
+		
+		
+			
+		
 
 	}
 }
