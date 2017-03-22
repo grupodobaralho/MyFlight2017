@@ -3,15 +3,12 @@ package pucrs.myflight.modelo;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import pucrs.myflight.modelo.Voo.Status;
 
 public class App {
 
-	public static void main(String[] args) {
-
-		Scanner in = new Scanner(System.in);
+	public static void main(String[] args) {		
 
 		// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 		// GERENCIADORES
@@ -112,16 +109,67 @@ public class App {
 
 		
 		// ATIVIDADE - EXERCÍCIO PRÁTICO (1)
-		ArrayList<Voo> lista1 = new ArrayList<>(gerVoos.listarTodos());
-		System.out.println("Informe o código do aeroporto:");
-		String codigo = in.nextLine();
-		for (Voo a : lista1) {
+		
+		//1-Listar os dados de todos os vôos de um determinado aeroporto, a partir do seu código
+		ArrayList<Voo> lista1 = new ArrayList<>(gerVoos.listarTodos());		
+		String codigo = "GRU";
+		for(Voo a : lista1) {
 			if (a.getRota().getOrigem().getCodigo().equals(codigo))
 				System.out.println(a.toString());
 		}
 		
 		
+		//2-Mostrar a geo-localização de todos os aeroportos que operam vôos de uma determinada cia aérea
+//		ArrayList<Rota> lista2 = new ArrayList<>(gerRotas.listarTodas());
+//		String codigo2 = "G3";
+//		for (Rota r : lista2) {
+//			if (r.getCia().getCodigo().equals(codigo2))
+//				System.out.println(r.getDestino().getLocal().toString() + r.getOrigem().getLocal().toString());
+//		}
 		
+		//DESAFIO
+		ArrayList<Rota> lista2 = new ArrayList<>(gerRotas.listarTodas());
+		ArrayList<Geo> geoAux = new ArrayList<>();
+		String codigo2 = "G3";
+		for(Rota r : lista2) {
+			if (r.getCia().getCodigo().equals(codigo2)){
+				Geo loc1 = r.getDestino().getLocal();
+				Geo loc2 = r.getOrigem().getLocal();
+				if(!geoAux.contains(loc1)){
+					geoAux.add(loc1);
+				}
+				if(!geoAux.contains(loc2)){
+					geoAux.add(loc2);
+				}
+			}
+		}
+		if(!geoAux.isEmpty()){
+			for(Geo a : geoAux) {
+				System.out.println(a.toString());
+			}
+		} else {
+			System.out.println("Geo Localizações não existentes!");
+		}
+			
+		
+		//3-Listar as cias aéreas que utilizam um determinado tipo de avião
+		ArrayList<Rota> lista3 = new ArrayList<>(gerRotas.listarTodas());
+		ArrayList<CiaAerea> aeronavesAux = new ArrayList<>();
+		String oaviao = "733";
+		for(Rota r : lista3){
+			if(r.getAeronave().getCodigo().equals(oaviao)){
+				if(!aeronavesAux.contains(r.getCia())){
+					aeronavesAux.add(r.getCia());
+				}				
+			}
+		}
+		if(!aeronavesAux.isEmpty()){
+			for(CiaAerea cia : aeronavesAux) {
+				System.out.println(cia.getNome());
+			}
+		} else {
+			System.out.println("Não existem companhias que utlizam a Aeronave Informada!");
+		}	
 
 	}
 }
