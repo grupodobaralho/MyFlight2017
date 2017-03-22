@@ -182,19 +182,14 @@ public class App {
 		// Consulta 4( relatorio de uso dos aeroportos)
 
 		ArrayList<AeroportoRel> listaAero = new ArrayList<>();
-		
-		for(Voo v: listaVoo) {
-			
-			if(!listaAero.contains(v.getRota().getOrigem())) {
-				
-				
-				
-				
+
+		for (Voo v : listaVoo) {
+
+			if (!listaAero.contains(v.getRota().getOrigem())) {
+
 			}
-				
-			
+
 		}
-		
 
 	}
 
