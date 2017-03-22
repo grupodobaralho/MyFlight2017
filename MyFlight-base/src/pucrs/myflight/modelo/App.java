@@ -20,10 +20,9 @@ public class App {
 		CiaAerea gol = new CiaAerea("G3", "Gol Linhas Aéreas SA");
 		CiaAerea tap = new CiaAerea("TP", "TAP Portugal");
 		CiaAerea azul = new CiaAerea("AD", "Azul Linhas Aéreas");
-		CiaAerea american= new CiaAerea("AA", "American Airlines");
+		CiaAerea american = new CiaAerea("AA", "American Airlines");
 		CiaAerea airfrance = new CiaAerea("AF", "Air France");
-		
-				
+
 		gerCias.adicionar(latam);
 		gerCias.adicionar(gol);
 		gerCias.adicionar(tap);
@@ -41,7 +40,7 @@ public class App {
 		Aeronave airbusA380 = new Aeronave("380", "Airbus Industrie A380", 644);
 		Aeronave boeing767_400 = new Aeronave("764", "Boeing 767-400", 304);
 		Aeronave boeing747_8 = new Aeronave("747", "Boeing 747-8", 386);
-		Aeronave airbusA330 = new Aeronave("330", "Airbus A330-203", 293 );
+		Aeronave airbusA330 = new Aeronave("330", "Airbus A330-203", 293);
 
 		gerAeronaves.adicionar(boeing733_300);
 		gerAeronaves.adicionar(boeing737_700);
@@ -49,8 +48,6 @@ public class App {
 		gerAeronaves.adicionar(boeing767_400);
 		gerAeronaves.adicionar(boeing747_8);
 		gerAeronaves.adicionar(airbusA330);
-		
-		
 
 		// **********************************************************************************************************
 		// Aeroportos
@@ -68,7 +65,7 @@ public class App {
 		Aeroporto lis = new Aeroporto("LIS", "Lisbon", geo3);
 		Aeroporto mia = new Aeroporto("MIA", "Miami International Apt", geo4);
 		Aeroporto vix = new Aeroporto("VIX", "Eurico de Aguiar Salles", geo5);
-		
+
 		gerAeroportos.adicionar(vix);
 		gerAeroportos.adicionar(poa);
 		gerAeroportos.adicionar(gru);
@@ -104,7 +101,6 @@ public class App {
 		Duration duracao1 = Duration.ofMinutes(90);
 		Duration duracao2 = Duration.ofMinutes(120);
 		Duration duracao3 = Duration.ofMinutes(620);
-		
 
 		Voo voo1 = new Voo(rota2, localDateTime1, duracao1);
 		voo1.setStatus(Status.ATRASADO);
@@ -122,9 +118,9 @@ public class App {
 
 		// Consulta 1
 
-		ArrayList<Voo> lista = new ArrayList<>(gerVoos.listarTodos());
+		ArrayList<Voo> listaVoo = new ArrayList<>(gerVoos.listarTodos());
 		String codigo = "GRU";
-		for (Voo v : lista) {
+		for (Voo v : listaVoo) {
 			if (v.getRota().getOrigem().getCodigo().equals(codigo)) {
 				System.out.println(v.toString());
 
@@ -135,27 +131,27 @@ public class App {
 		System.out.println();
 		// Consult 2 //Desafio implementado
 		ArrayList<Rota> lista2 = new ArrayList<>(gerRotas.listarTodas());
-		ArrayList<Geo> listaAux = new ArrayList<>();
+		ArrayList<Aeroporto> listaAux = new ArrayList<>();
 		String codigo2 = "G3";
 
 		for (Rota r : lista2) {
 			if (r.getCia().getCodigo().equals(codigo2)) {
-				Geo loc1 = r.getDestino().getLocal();
-				Geo loc2 = r.getOrigem().getLocal();
+				Aeroporto aero1 = r.getDestino();
+				Aeroporto aero2 = r.getOrigem();
 
-				if (!listaAux.contains(loc1)) {
-					listaAux.add(loc1);
+				if (!listaAux.contains(aero1)) {
+					listaAux.add(aero1);
 
-					if (!listaAux.contains(loc2))
-						listaAux.add(loc2);
+					if (!listaAux.contains(aero2))
+						listaAux.add(aero2);
 				}
 			}
 
 		}
 		if (!listaAux.isEmpty()) {
-			for (Geo g : listaAux) {
+			for (Aeroporto a : listaAux) {
 
-				System.out.println(g.toString());
+				System.out.println(a.toString());
 			}
 		} else
 			System.out.println("Não existem resultados para sua pesquisa!");
@@ -183,5 +179,23 @@ public class App {
 		} else
 			System.out.println("Não existem resultados para sua pesquisa!");
 
+		// Consulta 4( relatorio de uso dos aeroportos)
+
+		ArrayList<AeroportoRel> listaAero = new ArrayList<>();
+		
+		for(Voo v: listaVoo) {
+			
+			if(!listaAero.contains(v.getRota().getOrigem())) {
+				
+				
+				
+				
+			}
+				
+			
+		}
+		
+
 	}
+
 }
