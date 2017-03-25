@@ -3,11 +3,18 @@ package pucrs.myflight.modelo;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import pucrs.myflight.modelo.Voo.Status;
 
 public class App {
-
+	
 	public static void main(String[] args) {
 
 		// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -131,28 +138,28 @@ public class App {
 
 		// 1-Listar os dados de todos os vôos de um determinado aeroporto, a
 		// partir do seu código
-		ArrayList<Voo> lista1 = new ArrayList<>(gerVoos.listarTodos());
+		ArrayList<Voo> listaVoos = new ArrayList<>(gerVoos.listarTodos());
 		String codigo = "GRU";
-		for (Voo a : lista1) {
+		for (Voo a : listaVoos) {
 			if (a.getRota().getOrigem().getCodigo().equals(codigo))
 				System.out.println(a.toString());
 		}
 
 		// 2-Mostrar a geo-localização de todos os aeroportos que operam vôos de
 		// uma determinada cia aérea
-		// ArrayList<Rota> lista2 = new ArrayList<>(gerRotas.listarTodas());
+		// ArrayList<Rota> listaRotas = new ArrayList<>(gerRotas.listarTodas());
 		// String codigo2 = "G3";
-		// for (Rota r : lista2) {
+		// for (Rota r : listaRotas) {
 		// if (r.getCia().getCodigo().equals(codigo2))
 		// System.out.println(r.getDestino().getLocal().toString() +
 		// r.getOrigem().getLocal().toString());
 		// }
 
 		// DESAFIO
-		ArrayList<Rota> lista2 = new ArrayList<>(gerRotas.listarTodas());
+		ArrayList<Rota> listaRotas = new ArrayList<>(gerRotas.listarTodas());
 		ArrayList<Aeroporto> aeroAux = new ArrayList<>();
 		String codigo2 = "G3";
-		for (Rota r : lista2) {
+		for (Rota r : listaRotas) {
 			if (r.getCia().getCodigo().equals(codigo2)) {
 				Aeroporto loc1 = r.getDestino();
 				Aeroporto loc2 = r.getOrigem();
@@ -172,11 +179,10 @@ public class App {
 			System.out.println("Geo Localizações não existentes!");
 		}
 
-		// 3-Listar as cias aéreas que utilizam um determinado tipo de avião
-		ArrayList<Rota> lista3 = new ArrayList<>(gerRotas.listarTodas());
+		// 3-Listar as cias aéreas que utilizam um determinado tipo de avião	
 		ArrayList<CiaAerea> aeronavesAux = new ArrayList<>();
 		String oaviao = "733";
-		for (Rota r : lista3) {
+		for (Rota r : listaRotas) {
 			if (r.getAeronave().getCodigo().equals(oaviao)) {
 				if (!aeronavesAux.contains(r.getCia())) {
 					aeronavesAux.add(r.getCia());
@@ -189,9 +195,7 @@ public class App {
 			}
 		} else {
 			System.out.println("Não existem companhias que utlizam a Aeronave Informada!");
-		}
-		
-		
+		}		
 		
 		
 		System.out.println("\n\n\n");
@@ -202,16 +206,14 @@ public class App {
 		// ##########################################################################################################
 		//MAIS EXERCÍCIOS
 		
-		//1 - Operar um relatório de uso de aeroporto
-		//ArrayList<Voo> lista4 = new ArrayList<>(gerVoos.listarTodos());
+		//1 - Operar um relatório de uso de aeroporto/   <nome aeroporto>  <numero de voos>  ordenar por número de voos
+		
 		
 		//2 - Calcular a distancia entre dois aeroportos informados
 		
 		
-		
-		
-			
-		
 
 	}
+	
+	
 }
