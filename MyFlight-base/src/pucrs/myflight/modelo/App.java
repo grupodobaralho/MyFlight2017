@@ -3,18 +3,12 @@ package pucrs.myflight.modelo;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
 
 import pucrs.myflight.modelo.Voo.Status;
 
 public class App {
-	
+
 	public static void main(String[] args) {
 
 		// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -33,17 +27,16 @@ public class App {
 		CiaAerea latam = new CiaAerea("JJ", "LATAM Linhas Aéreas");
 		CiaAerea gol = new CiaAerea("G3", "Gol Linhas Aéreas SA");
 		CiaAerea tap = new CiaAerea("TP", "TAP Portugal");
-		CiaAerea azul = new CiaAerea("AD", "Azul Linhas Aéreas");		
+		CiaAerea azul = new CiaAerea("AD", "Azul Linhas Aéreas");
 		CiaAerea american = new CiaAerea("AA", "AmericanAirlines");
 		CiaAerea airfrance = new CiaAerea("AF", "Air France");
-		
+
 		gerCias.adicionar(latam);
 		gerCias.adicionar(gol);
 		gerCias.adicionar(tap);
 		gerCias.adicionar(azul);
 		gerCias.adicionar(american);
 		gerCias.adicionar(airfrance);
-		
 
 		// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 		// Aeronaves
@@ -56,7 +49,7 @@ public class App {
 		Aeronave boeing767_400 = new Aeronave("764", "Boeing 767-400", 304);
 		Aeronave boeing747_8 = new Aeronave("747", "Boeing 747-8", 386);
 		Aeronave airbusA330 = new Aeronave("330", "Airbus A330-203", 293);
-				
+
 		gerAeronaves.adicionar(boeing733_300);
 		gerAeronaves.adicionar(boeing737_700);
 		gerAeronaves.adicionar(airbusA380);
@@ -80,7 +73,6 @@ public class App {
 		Aeroporto lis = new Aeroporto("LIS", "Lisbon", geo3);
 		Aeroporto mia = new Aeroporto("MIA", "Miami International Apt", geo4);
 		Aeroporto vix = new Aeroporto("VIX", "Eurico de Aguiar Salles", geo5);
-		
 
 		gerAeroportos.adicionar(poa);
 		gerAeroportos.adicionar(gru);
@@ -138,6 +130,8 @@ public class App {
 
 		// 1-Listar os dados de todos os vôos de um determinado aeroporto, a
 		// partir do seu código
+		System.out.print(
+				"\n\n### EXERCÍCIO LISTAR OS DADOS DE TODOS OS VOOS DE UM DETERMINADO AEROPORTO A PARTIR DO SEU CODIGO ### \n\n");
 		ArrayList<Voo> listaVoos = new ArrayList<>(gerVoos.listarTodos());
 		String codigo = "GRU";
 		for (Voo a : listaVoos) {
@@ -156,6 +150,8 @@ public class App {
 		// }
 
 		// DESAFIO
+		System.out.print(
+				"\n\n### EXERCÍCIO MOSTRAR A GEO LOCALIZACAO DE TODOS AEROPORTOS QUE OPERAM VOOS DE UMA DETERMINADA CIA AEREA ### \n\n");
 		ArrayList<Rota> listaRotas = new ArrayList<>(gerRotas.listarTodas());
 		ArrayList<Aeroporto> aeroAux = new ArrayList<>();
 		String codigo2 = "G3";
@@ -179,7 +175,8 @@ public class App {
 			System.out.println("Geo Localizações não existentes!");
 		}
 
-		// 3-Listar as cias aéreas que utilizam um determinado tipo de avião	
+		// 3-Listar as cias aéreas que utilizam um determinado tipo de avião
+		System.out.print("\n\n### EXERCÍCIO LISTAR AS CIAS AEREAS QUE UTILIZAM UM DETERMINADO TIPO DE AVIAO ### \n\n");
 		ArrayList<CiaAerea> aeronavesAux = new ArrayList<>();
 		String oaviao = "733";
 		for (Rota r : listaRotas) {
@@ -195,25 +192,52 @@ public class App {
 			}
 		} else {
 			System.out.println("Não existem companhias que utlizam a Aeronave Informada!");
-		}		
-		
-		
-		System.out.println("\n\n\n");
-		
-		
-		
-		
-		// ##########################################################################################################
-		//MAIS EXERCÍCIOS
-		
-		//1 - Operar um relatório de uso de aeroporto/   <nome aeroporto>  <numero de voos>  ordenar por número de voos
-		
-		
-		//2 - Calcular a distancia entre dois aeroportos informados
-		
-		
+		}
 
+		// ##########################################################################################################
+		// MAIS EXERCÍCIOS
+
+		// 1 - Operar um relatório de uso de aeroporto/ <nome aeroporto> <numero
+		// de voos> ordenar por número de voos
+		System.out.print("\n\n### EXERCÍCIO RELATÓRIO DE USO AEROPORTO: ###\n\n");
+		ArrayList<AeroportoRel> listaAeroRel = new ArrayList<>();
+		ArrayList<Aeroporto> listaAeroporto = new ArrayList<>(gerAeroportos.listarTodos());
+		for (Aeroporto a : listaAeroporto) {
+			listaAeroRel.add(new AeroportoRel(a));
+		}
+		for (Voo v : listaVoos) {
+			Aeroporto origem = v.getRota().getOrigem();
+			Aeroporto destino = v.getRota().getDestino();
+			for (AeroportoRel a : listaAeroRel) {
+				if (a.getAeroporto().equals(origem)) {
+					a.setNumeroDeVoos(a.getNumeroDeVoos() + 1);
+				}
+				if (a.getAeroporto().equals(destino)) {
+					a.setNumeroDeVoos(a.getNumeroDeVoos() + 1);
+				}
+			}
+		}
+		Comparator<AeroportoRel> bynumeroDeVoos = (a1, a2) -> Integer.compare(a1.getNumeroDeVoos(),
+				a2.getNumeroDeVoos());
+		listaAeroRel.stream().sorted(bynumeroDeVoos).forEach(e -> System.out
+				.println("<" + e.getAeroporto().getNome() + " =>" + "<Numero de Voos: " + e.getNumeroDeVoos() + ">"));
+
+		// 2 - Calcular a distancia entre dois aeroportos informados
+		System.out.print("\n\n### EXERCÍCIO CALCULAR DISTANCIA ENTRE DOIS AEROPORTOS INFORMADOS ### \n\n");
+		Aeroporto um = gerAeroportos.buscarPorCodigo("POA");
+		Aeroporto dois = gerAeroportos.buscarPorCodigo("GRU");
+		double metros = 6371e3;
+		double lat1 = um.getLocal().getLatitude();
+		double lat2 = dois.getLocal().getLatitude();
+		double lat_lat = lat1 - lat2;
+		double long_long = um.getLocal().getLongitude() - dois.getLocal().getLongitude();
+		double cha = Math.sin(lat_lat/2) * Math.sin(lat_lat/2) +
+		        Math.cos(lat1) * Math.cos(lat2) *
+		        Math.sin(long_long/2) * Math.sin(long_long/2);
+		double che = 2 * Math.atan2(Math.sqrt(cha), Math.sqrt(1-cha));
+		double dhe = metros * che;
+		System.out.println("A distancia do:\n"+um.getNome()+"\npara o :\n"+dois.getNome()+
+							"\ne de: "+ (int)dhe + " metros");
 	}
-	
-	
+
 }
