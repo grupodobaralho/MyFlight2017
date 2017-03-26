@@ -226,18 +226,20 @@ public class App {
 		System.out.print("\n\n### EXERCÍCIO CALCULAR DISTANCIA ENTRE DOIS AEROPORTOS INFORMADOS ### \n\n");
 		Aeroporto um = gerAeroportos.buscarPorCodigo("POA");
 		Aeroporto dois = gerAeroportos.buscarPorCodigo("GRU");
-		double metros = 6371e3;
+		double R = 6371.01;
 		double lat1 = um.getLocal().getLatitude();
 		double lat2 = dois.getLocal().getLatitude();
-		double lat_lat = lat1 - lat2;
-		double long_long = um.getLocal().getLongitude() - dois.getLocal().getLongitude();
-		double cha = Math.sin(lat_lat/2) * Math.sin(lat_lat/2) +
-		        Math.cos(lat1) * Math.cos(lat2) *
-		        Math.sin(long_long/2) * Math.sin(long_long/2);
-		double che = 2 * Math.atan2(Math.sqrt(cha), Math.sqrt(1-cha));
-		double dhe = metros * che;
+		double latDistance = Math.toRadians(lat1) - Math.toRadians(lat2);
+		double lonDistance = Math.toRadians(um.getLocal().getLongitude()) - Math.toRadians(dois.getLocal().getLongitude());
+		double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2)
+	            + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
+	            * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
+	    Double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+	    double distance = R * c * 1000; // convert to meters
+	    distance = Math.pow(distance, 2) + Math.pow(0, 2);	    
+//		
 		System.out.println("A distancia do:\n"+um.getNome()+"\npara o :\n"+dois.getNome()+
-							"\ne de: "+ (int)dhe + " metros");
+							"\ne de: "+ (int)Math.sqrt(distance) + "metros");
 	}
 
 }
