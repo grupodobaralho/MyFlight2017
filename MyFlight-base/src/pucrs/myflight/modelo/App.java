@@ -234,12 +234,12 @@ public class App {
 		double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2)
 	            + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
 	            * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
-	    Double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+	    double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 	    double distance = R * c * 1000; // convert to meters
 	    distance = Math.pow(distance, 2) + Math.pow(0, 2);	    
 //		
 		System.out.println("A distancia do:\n"+um.getNome()+"\npara o :\n"+dois.getNome()+
-							"\ne de: "+ (int)Math.sqrt(distance) + "metros");
+							"\ne de: "+ (int)Math.sqrt(distance) + " metros");
 	}
 
 }
