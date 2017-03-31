@@ -237,9 +237,47 @@ public class App {
 	    double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 	    double distance = R * c * 1000; // convert to meters
 	    distance = Math.pow(distance, 2) + Math.pow(0, 2);	    
-//		
-		System.out.println("A distancia do:\n"+um.getNome()+"\npara o :\n"+dois.getNome()+
+		
+		System.out.println("A distancia do:    "+um.getNome()+"\npara o:    "+dois.getNome()+
 							"\ne de: "+ (int)Math.sqrt(distance) + " metros");
+		
+		// ##########################################################################################################
+		// EXERCÍCIOS DE HERANCA
+		
+		System.out.print("\n\n### EXERCICIO DE HERANCA ### \n\n");
+		System.out.println("2 - A modelagem não esta legal... podiamos usar Voo como classe estatica\n");
+		
+		Voo vooTeste = new VooEscalas(rota1, localDateTime1, duracao1, rota2);
+		vooTeste.setStatus(Status.ATRASADO);
+		//vooTeste.getRotaFinal(); Não Posso pois Voo não encherga as filhas
+		System.out.println("#Testando Voo/VooEscalas#\n" + vooTeste.toString()+"\n"); 
+		//Porém o toString printa  o toString do VooEscalas por causa do @Override
+		
+		VooEscalas vooEscalasTeste = new VooEscalas(rota1, localDateTime1, duracao1, rota2);
+		vooEscalasTeste.setStatus(Status.ATRASADO);
+		System.out.println("#Testando VooEscalas/VooEscalas#\n" + vooEscalasTeste.toString()+"\n"); 
+		//tenho acesso direto aos métodos da classe vooEscalasTeste
+		
+		
+		ArrayList<Rota> escalas = new ArrayList<>();
+		escalas.add(rota1);
+		escalas.add(rota2);
+		escalas.add(rota3);
+		VooVariasEscalas vooVariasEscalasTeste = new VooVariasEscalas(rota1, localDateTime1, duracao1, escalas);
+		vooVariasEscalasTeste.setStatus(Status.ATRASADO);
+		System.out.println("#Testando VooVariasEscalas/VooVariasEscalas#\n" + vooVariasEscalasTeste.toString()+"\n"); 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 }
