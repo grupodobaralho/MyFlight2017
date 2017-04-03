@@ -4,8 +4,6 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 
 public class VooEscalas extends Voo {
-	
-	private Rota rotaFinal;
 
 	public VooEscalas(Rota rota, LocalDateTime datahora, Duration duracao, Rota rotaFinal) {
 		super(rota, datahora, duracao);
