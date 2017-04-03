@@ -10,28 +10,21 @@ public class Voo {
 	};
 
 	private LocalDateTime datahora;
-	private Duration duracao;
-	private Rota rota;
-	private Status status;
 
-	public Voo(Rota rota, LocalDateTime datahora, Duration duracao) {
-		this.rota = rota;
+	public Voo(LocalDateTime datahora) {
+
 		this.datahora = datahora;
-		this.duracao = duracao;
-		this.status = Status.CONFIRMADO; // 
+
 	}
 
-	public Rota getRota() {
-		return rota;
-	}
+	public abstract Rota getRota();
 
 	public LocalDateTime getDatahora() {
+
 		return datahora;
 	}
 
-	public Duration getDuracao() {
-		return duracao;
-	}
+	public abstract Duration getDuracao();
 
 	public Status getStatus() {
 		return status;
