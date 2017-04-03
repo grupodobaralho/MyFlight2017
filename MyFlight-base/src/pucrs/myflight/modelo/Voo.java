@@ -3,16 +3,16 @@ package pucrs.myflight.modelo;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
-public class Voo {
+public abstract class Voo {
+	private LocalDateTime datahora;
+	private Status status;
 
 	public enum Status {
 		CONFIRMADO, ATRASADO, CANCELADO
 	};
 
-	private LocalDateTime datahora;
-
 	public Voo(LocalDateTime datahora) {
-
+		this.status = Status.CONFIRMADO;
 		this.datahora = datahora;
 
 	}
@@ -35,6 +35,7 @@ public class Voo {
 	}
 
 	public String toString() {
-		return "Voo [datahora=" + datahora + ", duracao=" + duracao + ", rota=" + rota + ", status=" + status + "]";
+		return "Voo [datahora=" + datahora + ", status=" + status + "]";
 	}
+
 }
