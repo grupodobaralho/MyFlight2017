@@ -110,13 +110,13 @@ public class App {
 		Duration duracao2 = Duration.ofMinutes(120);
 		Duration duracao3 = Duration.ofMinutes(620);
 
-		Voo voo1 = new Voo(rota2, localDateTime1, duracao1);
+		VooDireto voo1 = new VooDireto(localDateTime1, rota2);
 		voo1.setStatus(Status.ATRASADO);
-		Voo voo2 = new Voo(rota4, localDateTime2, duracao2);
+		VooDireto voo2 = new VooDireto(localDateTime2, rota4);
 		voo2.setStatus(Status.CONFIRMADO);
-		Voo voo3 = new Voo(rota3, localDateTime3, duracao2);
+		VooDireto voo3 = new VooDireto(localDateTime3, rota3);
 		voo3.setStatus(Status.CANCELADO);
-		Voo voo4 = new Voo(rota5, localDateTime4, duracao3);
+		VooDireto voo4 = new VooDireto(localDateTime4, rota5);
 		voo4.setStatus(Status.CONFIRMADO);
 
 		gerVoos.adicionar(voo1);
@@ -243,29 +243,30 @@ public class App {
 		
 		// ##########################################################################################################
 		// EXERCÍCIOS DE HERANCA
+//		
+//		System.out.print("\n\n### EXERCICIO DE HERANCA ### \n\n");
+//		System.out.println("2 - A modelagem não esta legal... podiamos usar Voo como classe estatica\n");
+//		
+//		Voo vooTeste = new VooEscalas(rota1, localDateTime1, duracao1, rota2);
+//		vooTeste.setStatus(Status.ATRASADO);
+//		//vooTeste.getRotaFinal(); Não Posso pois Voo não encherga as filhas
+//		System.out.println("#Testando Voo/VooEscalas#\n" + vooTeste.toString()+"\n"); 
+//		//Porém o toString printa  o toString do VooEscalas por causa do @Override
+//		
+//		VooEscalas vooEscalasTeste = new VooEscalas(rota1, localDateTime1, duracao1, rota2);
+//		vooEscalasTeste.setStatus(Status.ATRASADO);
+//		System.out.println("#Testando VooEscalas/VooEscalas#\n" + vooEscalasTeste.toString()+"\n"); 
+//		//tenho acesso direto aos métodos da classe vooEscalasTeste
+//		
+//		
+//		ArrayList<Rota> escalas = new ArrayList<>();
+//		escalas.add(rota1);
+//		escalas.add(rota2);
+//		escalas.add(rota3);
+//		VooVariasEscalas vooVariasEscalasTeste = new VooVariasEscalas(rota1, localDateTime1, duracao1, escalas);
+//		vooVariasEscalasTeste.setStatus(Status.ATRASADO);
+//		System.out.println("#Testando VooVariasEscalas/VooVariasEscalas#\n" + vooVariasEscalasTeste.toString()+"\n"); 
 		
-		System.out.print("\n\n### EXERCICIO DE HERANCA ### \n\n");
-		System.out.println("2 - A modelagem não esta legal... podiamos usar Voo como classe estatica\n");
-		
-		Voo vooTeste = new VooEscalas(rota1, localDateTime1, duracao1, rota2);
-		vooTeste.setStatus(Status.ATRASADO);
-		//vooTeste.getRotaFinal(); Não Posso pois Voo não encherga as filhas
-		System.out.println("#Testando Voo/VooEscalas#\n" + vooTeste.toString()+"\n"); 
-		//Porém o toString printa  o toString do VooEscalas por causa do @Override
-		
-		VooEscalas vooEscalasTeste = new VooEscalas(rota1, localDateTime1, duracao1, rota2);
-		vooEscalasTeste.setStatus(Status.ATRASADO);
-		System.out.println("#Testando VooEscalas/VooEscalas#\n" + vooEscalasTeste.toString()+"\n"); 
-		//tenho acesso direto aos métodos da classe vooEscalasTeste
-		
-		
-		ArrayList<Rota> escalas = new ArrayList<>();
-		escalas.add(rota1);
-		escalas.add(rota2);
-		escalas.add(rota3);
-		VooVariasEscalas vooVariasEscalasTeste = new VooVariasEscalas(rota1, localDateTime1, duracao1, escalas);
-		vooVariasEscalasTeste.setStatus(Status.ATRASADO);
-		System.out.println("#Testando VooVariasEscalas/VooVariasEscalas#\n" + vooVariasEscalasTeste.toString()+"\n"); 
 		
 		
 		
