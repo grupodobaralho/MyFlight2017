@@ -225,7 +225,7 @@ public class App {
 		// 2 - Calcular a distancia entre dois aeroportos informados
 		System.out.print("\n\n### EXERCÍCIO CALCULAR DISTANCIA ENTRE DOIS AEROPORTOS INFORMADOS ### \n\n");
 		Aeroporto um = gerAeroportos.buscarPorCodigo("POA");
-		Aeroporto dois = gerAeroportos.buscarPorCodigo("VIX");
+		Aeroporto dois = gerAeroportos.buscarPorCodigo("GRU");
 		double R = 6371.01;
 		double lat1 = um.getLocal().getLatitude();
 		double lat2 = dois.getLocal().getLatitude();
@@ -268,16 +268,13 @@ public class App {
 //		System.out.println("#Testando VooVariasEscalas/VooVariasEscalas#\n" + vooVariasEscalasTeste.toString()+"\n"); 
 		
 		
+		// ##########################################################################################################
+		// TESTANDO O GEO DISTANCIA
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+			System.out.print("\n\n### TESTANDO O GEO DISTANCIA ### \n\n");
+			double distancia = geo1.distancia(geo1, geo2);
+			System.out.println("A distancia entra POA e GRU é de: "+ distancia);
+			
 		
 	}
 

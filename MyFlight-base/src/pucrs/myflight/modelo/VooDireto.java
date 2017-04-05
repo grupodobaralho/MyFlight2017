@@ -16,6 +16,9 @@ public class VooDireto extends Voo {
 
 	@Override
 	public Duration getDuracao() {
+//		double velMediaJato = 805;
+//		Time a = new Time();
+//		double alo = rota.getOrigem().getLocal().distancia(rota.getOrigem().getLocal(), rota.getDestino().getLocal());
 		return null;
 	}
 
@@ -29,6 +32,6 @@ public class VooDireto extends Voo {
 		StringBuilder str = new StringBuilder();
 		str.append(super.toString());
 		str.append("\nVooDireto [rota=" + rota + "]");	
-		return str.toString();	
+		return str.toString();			
 	}
 }

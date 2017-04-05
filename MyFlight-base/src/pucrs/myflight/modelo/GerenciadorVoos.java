@@ -21,13 +21,14 @@ public class GerenciadorVoos {
 	}
 
 	public ArrayList<Voo> buscarData(LocalDate data) {
-		ArrayList<Voo> lista = new ArrayList<>();
-		for (Voo a : voos) {
-			if (data.equals(a.getDatahora().toLocalDate())) {
-				lista.add(a);
-			}
-		}
-		return lista;
+//		ArrayList<Voo> lista = new ArrayList<>();
+//		for (Voo a : voos) {
+//			if (data.equals(a.getDatahora().toLocalDate())) {
+//				lista.add(a);
+//			}
+//		}
+//		return lista;
+		return voos;
 	}
 
 }
