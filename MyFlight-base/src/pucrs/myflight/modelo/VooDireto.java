@@ -2,7 +2,6 @@ package pucrs.myflight.modelo;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 public class VooDireto extends Voo {
 	
@@ -16,10 +15,8 @@ public class VooDireto extends Voo {
 
 	@Override
 	public Duration getDuracao() {
-//		double velMediaJato = 805;
-//		Time a = new Time();
-//		double alo = rota.getOrigem().getLocal().distancia(rota.getOrigem().getLocal(), rota.getDestino().getLocal());
-		return null;
+		double alo = Geo.distancia(rota.getOrigem().getLocal(), rota.getDestino().getLocal());		
+		return Duration.ofSeconds((long)((alo/805+0.5)*3600));
 	}
 
 	@Override

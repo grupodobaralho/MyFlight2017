@@ -63,10 +63,10 @@ public class App {
 		// (latitude e longitude):
 
 		Geo geo1 = new Geo(-29.9939, -51.1711);
-		Geo geo2 = new Geo(-23.4356, -46.4731);
+		Geo geo2 = new Geo(-23.4356, -46.4731);		
 		Geo geo3 = new Geo(38.7742, -9.1342);
 		Geo geo4 = new Geo(25.7933, -80.2906);
-		Geo geo5 = new Geo(-20.2566, -40.2861);
+		Geo geo5 = new Geo(-20.2566, -40.2861);		
 
 		Aeroporto poa = new Aeroporto("POA", "Salgado Filho Intl Apt", geo1);
 		Aeroporto gru = new Aeroporto("GRU", "São Paulo Guarulhos Intl Apt", geo2);
@@ -274,7 +274,7 @@ public class App {
 			System.out.print("\n\n### TESTANDO O GEO DISTANCIA ### \n\n");
 			double distancia = geo1.distancia(geo1, geo2);
 			System.out.println("A distancia entra POA e GRU é de: "+ distancia);
-			
+			System.out.println("A duracao do voo1 POA - GRU é: "+voo1.getDuracao());
 		
 	}
 

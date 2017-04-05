@@ -18,8 +18,9 @@ public class VooEscalas extends Voo {
 	}
 
 	@Override
-	public Duration getDuracao() {
-		
+	public Duration getDuracao() {		
+//		double alo = Geo.distancia(rota.getOrigem().getLocal(), rota.getDestino().getLocal());		
+//		return Duration.ofSeconds((long)((alo/805+0.5)*3600));
 		return null;
 	}
 
