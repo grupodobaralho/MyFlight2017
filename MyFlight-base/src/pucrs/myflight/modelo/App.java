@@ -275,6 +275,15 @@ public class App {
 			double distancia = geo1.distancia(geo1, geo2);
 			System.out.println("A distancia entra POA e GRU é de: "+ distancia);
 			System.out.println("A duracao do voo1 POA - GRU é: "+voo1.getDuracao());
+			
+			VooEscalas vooE1 = new VooEscalas(localDateTime1);
+			vooE1.adicionarRotas(rota2);
+			vooE1.adicionarRotas(rota4);
+			
+		    System.out.println("A duração do voo " + vooE1.toString() +  vooE1.getDuracao());
+			
+			
+			
 		
 	}
 
