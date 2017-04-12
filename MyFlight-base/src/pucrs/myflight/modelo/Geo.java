@@ -22,4 +22,9 @@ public class Geo {
 	public String toString() {
 		return "Geo [latitude=" + latitude + ", longitude=" + longitude + "]";
 	}
+
+	public static double distancia(Geo local, Geo local2) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

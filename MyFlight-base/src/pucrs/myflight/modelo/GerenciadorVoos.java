@@ -28,7 +28,7 @@ public class GerenciadorVoos {
 		ArrayList<Voo> voosData = new ArrayList<>();
 		
 		for(Voo v: voos){
-			if(v.getDatahora().toLocalDate().equals(data)) voosData.add(v);
+			if(v.getDataHora().toLocalDate().equals(data)) voosData.add(v);
 			
 		}
 		

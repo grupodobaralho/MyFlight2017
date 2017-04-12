@@ -4,38 +4,36 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 
 public abstract class Voo {
-	private LocalDateTime datahora;
-	private Status status;
 
 	public enum Status {
 		CONFIRMADO, ATRASADO, CANCELADO
 	};
 
-	public Voo(LocalDateTime datahora) {
-		this.status = Status.CONFIRMADO;
-		this.datahora = datahora;
+	private LocalDateTime datahora;
+	private Status status;
 
+	public Voo(LocalDateTime datahora) {
+		this.datahora = datahora;	
+		this.status = Status.CONFIRMADO;
 	}
 
-	public abstract Rota getRota();
-
-	public LocalDateTime getDatahora() {
-
+	public LocalDateTime getDataHora() {
 		return datahora;
 	}
-
-	public abstract Duration getDuracao();
 
 	public Status getStatus() {
 		return status;
 	}
 
-	public void setStatus(Status novo) {
-		this.status = novo;
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 
+	public abstract Duration getDuracao();	
+	public abstract Rota getRota();
+
+	@Override
 	public String toString() {
 		return "Voo [datahora=" + datahora + ", status=" + status + "]";
 	}
-
 }

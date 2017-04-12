@@ -4,7 +4,7 @@ public class AeroportoRel {
 	private Aeroporto aero;
 	private int cont;
 
-	public AeroportoRel(Aeroporto aero, int cont) {
+	public AeroportoRel(Aeroporto aero) {
 		this.aero = aero;
 		this.cont = cont;
 	}
@@ -29,4 +29,5 @@ public class AeroportoRel {
 		return "AeroportoRel [aero=" + aero + ", cont=" + cont + "]";
 	}
 
+	
 }
