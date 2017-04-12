@@ -209,10 +209,10 @@ public class App {
 			Aeroporto origem = v.getRota().getOrigem();
 			Aeroporto destino = v.getRota().getDestino();
 			for (AeroportoRel a : listaAeroRel) {
-				if (a.getAero().equals(origem)) {
+				if (a.getAeroporto().equals(origem)) {
 					a.setNumeroDeVoos(a.getNumeroDeVoos() + 1);
 				}
-				if (a.getAero().equals(destino)) {
+				if (a.getAeroporto().equals(destino)) {
 					a.setNumeroDeVoos(a.getNumeroDeVoos() + 1);
 				}
 			}
@@ -220,12 +220,12 @@ public class App {
 		Comparator<AeroportoRel> bynumeroDeVoos = (a1, a2) -> Integer.compare(a1.getNumeroDeVoos(),
 				a2.getNumeroDeVoos());
 		listaAeroRel.stream().sorted(bynumeroDeVoos).forEach(e -> System.out
-				.println("<" + e.getAero().getNome() + " =>" + "<Numero de Voos: " + e.getNumeroDeVoos() + ">"));
+				.println("<" + e.getAeroporto().getNome() + " =>" + "<Numero de Voos: " + e.getNumeroDeVoos() + ">"));
 
 		// 2 - Calcular a distancia entre dois aeroportos informados
 		System.out.print("\n\n### EXERCÍCIO CALCULAR DISTANCIA ENTRE DOIS AEROPORTOS INFORMADOS ### \n\n");
-		Aeroporto um = gerAeroportos.buscarPorCodigo("POA");
-		Aeroporto dois = gerAeroportos.buscarPorCodigo("GRU");
+		Aeroporto um = gerAeroportos.buscaPorCodigo("POA");
+		Aeroporto dois = gerAeroportos.buscaPorCodigo("GRU");
 		double R = 6371.01;
 		double lat1 = um.getLocal().getLatitude();
 		double lat2 = dois.getLocal().getLatitude();
