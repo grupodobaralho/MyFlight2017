@@ -20,7 +20,7 @@ public class CiaAerea {
 
 	@Override
 	public String toString() {
-		return "CiaAerea [codigo=" + codigo + ", nome=" + nome + "]\n";
+		return "CiaAerea [codigo=" + codigo + ", nome=" + nome + "]";
 	}
 
 }

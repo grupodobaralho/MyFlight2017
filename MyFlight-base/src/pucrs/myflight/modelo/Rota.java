@@ -36,6 +36,6 @@ public class Rota implements Comparable<Rota>{
 
 	@Override
 	public String toString() {
-		return "Rota [cia=" + cia + ", origem=" + origem + ", destino=" + destino + ", aeronave=" + aeronave + "]\n";
+		return "Rota [\n" + cia + "\norigem=" + origem + "\ndestino=" + destino + "\n"+aeronave + "]\n";
 	}	
 }

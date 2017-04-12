@@ -25,7 +25,7 @@ public class Aeroporto implements Comparable<Aeroporto>{
 
 	@Override
 	public String toString() {
-		return "Aeroporto [codigo=" + codigo + ", nome=" + nome + ", loc=" + loc + "]\n";
+		return "Aeroporto [codigo=" + codigo + ", nome=" + nome + loc + "]";
 	}
 
 	@Override

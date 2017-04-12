@@ -297,7 +297,8 @@ public class App {
 			    
 			System.out.print("\n\n### TESTANDO O COMPARATOR ### \n\n");
 			System.out.println(gerRotas.listarTodas().toString());
-			gerRotas.ordenaNomeCiaDois();
+			gerRotas.ordenaCia();
+			System.out.println("\n\nApos ordenar:\n\n");
 			System.out.println(gerRotas.listarTodas().toString());
 			
 		
