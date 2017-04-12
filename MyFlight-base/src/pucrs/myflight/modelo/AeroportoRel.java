@@ -24,7 +24,7 @@ public class AeroportoRel {
 
 	@Override
 	public String toString() {
-		return "AeroportoRel [aeroporto=" + aeroporto + ", numeroDeVoos=" + numeroDeVoos + "]";
+		return "AeroportoRel [aeroporto=" + aeroporto + ", numeroDeVoos=" + numeroDeVoos + "]\n";
 	}	
 
 }

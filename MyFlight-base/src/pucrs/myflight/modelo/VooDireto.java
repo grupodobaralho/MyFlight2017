@@ -28,7 +28,7 @@ public class VooDireto extends Voo {
 	public String toString() {	
 		StringBuilder str = new StringBuilder();
 		str.append(super.toString());
-		str.append("\nVooDireto [rota=" + rota + "]");	
+		str.append("\nVooDireto [rota=" + rota + "]\n");	
 		return str.toString();			
 	}
 }

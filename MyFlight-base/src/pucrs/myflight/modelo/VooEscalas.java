@@ -47,7 +47,7 @@ public class VooEscalas extends Voo {
 	public String toString() {
 		StringBuilder str = new StringBuilder();
 		str.append(super.toString());
-		str.append("\nVooEscalas [rotas=" + rotas.toString() + "]");
+		str.append("\nVooEscalas [rotas=" + rotas.toString() + "]\n");
 		return str.toString();
 	}
 

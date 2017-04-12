@@ -282,7 +282,23 @@ public class App {
 			
 		    System.out.println("A duração do voo " + vooE1.toString() +  vooE1.getDuracao());
 			
+		// ##########################################################################################################
+		// TESTANDO O COMPARABLE
+		    
+		    System.out.print("\n\n### TESTANDO O COMPARABLE ### \n\n");
 			
+			System.out.println(rota1.compareTo(rota2));
+			System.out.println(rota2.compareTo(rota1));
+			System.out.println(rota1.compareTo(rota3));
+			System.out.println(rota3.compareTo(rota2));
+			
+		// ##########################################################################################################
+		// TESTANDO O COMPARABLE
+			    
+			System.out.print("\n\n### TESTANDO O COMPARATOR ### \n\n");
+			System.out.println(gerRotas.listarTodas().toString());
+			gerRotas.ordenaNomeCiaDois();
+			System.out.println(gerRotas.listarTodas().toString());
 			
 		
 	}
