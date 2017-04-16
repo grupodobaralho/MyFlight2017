@@ -63,10 +63,10 @@ public class App {
 		// (latitude e longitude):
 
 		Geo geo1 = new Geo(-29.9939, -51.1711);
-		Geo geo2 = new Geo(-23.4356, -46.4731);		
+		Geo geo2 = new Geo(-23.4356, -46.4731);
 		Geo geo3 = new Geo(38.7742, -9.1342);
 		Geo geo4 = new Geo(25.7933, -80.2906);
-		Geo geo5 = new Geo(-20.2566, -40.2861);		
+		Geo geo5 = new Geo(-20.2566, -40.2861);
 
 		Aeroporto poa = new Aeroporto("POA", "Salgado Filho Intl Apt", geo1);
 		Aeroporto gru = new Aeroporto("GRU", "São Paulo Guarulhos Intl Apt", geo2);
@@ -79,6 +79,8 @@ public class App {
 		gerAeroportos.adicionar(lis);
 		gerAeroportos.adicionar(mia);
 		gerAeroportos.adicionar(vix);
+		
+		gerAeroportos.ordenaPorNome();
 
 		// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 		// Rotas
@@ -96,6 +98,8 @@ public class App {
 		gerRotas.adicionar(rota3);
 		gerRotas.adicionar(rota4);
 		gerRotas.adicionar(rota5);
+
+		gerRotas.ordenaPorCiaAerea();
 
 		// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 		// Voos
@@ -230,61 +234,80 @@ public class App {
 		double lat1 = um.getLocal().getLatitude();
 		double lat2 = dois.getLocal().getLatitude();
 		double latDistance = Math.toRadians(lat1) - Math.toRadians(lat2);
-		double lonDistance = Math.toRadians(um.getLocal().getLongitude()) - Math.toRadians(dois.getLocal().getLongitude());
-		double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2)
-	            + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
-	            * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
-	    double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-	    double distance = R * c * 1000; // convert to meters
-	    distance = Math.pow(distance, 2) + Math.pow(0, 2);	    
-		
-		System.out.println("A distancia do:    "+um.getNome()+"\npara o:    "+dois.getNome()+
-							"\ne de: "+ (int)Math.sqrt(distance) + " metros");
-		
+		double lonDistance = Math.toRadians(um.getLocal().getLongitude())
+				- Math.toRadians(dois.getLocal().getLongitude());
+		double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2) + Math.cos(Math.toRadians(lat1))
+				* Math.cos(Math.toRadians(lat2)) * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
+		double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+		double distance = R * c * 1000; // convert to meters
+		distance = Math.pow(distance, 2) + Math.pow(0, 2);
+
+		System.out.println("A distancia do:    " + um.getNome() + "\npara o:    " + dois.getNome() + "\ne de: "
+				+ (int) Math.sqrt(distance) + " metros");
+
 		// ##########################################################################################################
 		// EXERCÍCIOS DE HERANCA
-//		
-//		System.out.print("\n\n### EXERCICIO DE HERANCA ### \n\n");
-//		System.out.println("2 - A modelagem não esta legal... podiamos usar Voo como classe estatica\n");
-//		
-//		Voo vooTeste = new VooEscalas(rota1, localDateTime1, duracao1, rota2);
-//		vooTeste.setStatus(Status.ATRASADO);
-//		//vooTeste.getRotaFinal(); Não Posso pois Voo não encherga as filhas
-//		System.out.println("#Testando Voo/VooEscalas#\n" + vooTeste.toString()+"\n"); 
-//		//Porém o toString printa  o toString do VooEscalas por causa do @Override
-//		
-//		VooEscalas vooEscalasTeste = new VooEscalas(rota1, localDateTime1, duracao1, rota2);
-//		vooEscalasTeste.setStatus(Status.ATRASADO);
-//		System.out.println("#Testando VooEscalas/VooEscalas#\n" + vooEscalasTeste.toString()+"\n"); 
-//		//tenho acesso direto aos métodos da classe vooEscalasTeste
-//		
-//		
-//		ArrayList<Rota> escalas = new ArrayList<>();
-//		escalas.add(rota1);
-//		escalas.add(rota2);
-//		escalas.add(rota3);
-//		VooVariasEscalas vooVariasEscalasTeste = new VooVariasEscalas(rota1, localDateTime1, duracao1, escalas);
-//		vooVariasEscalasTeste.setStatus(Status.ATRASADO);
-//		System.out.println("#Testando VooVariasEscalas/VooVariasEscalas#\n" + vooVariasEscalasTeste.toString()+"\n"); 
-		
-		
+		//
+		// System.out.print("\n\n### EXERCICIO DE HERANCA ### \n\n");
+		// System.out.println("2 - A modelagem não esta legal... podiamos usar
+		// Voo como classe estatica\n");
+		//
+		// Voo vooTeste = new VooEscalas(rota1, localDateTime1, duracao1,
+		// rota2);
+		// vooTeste.setStatus(Status.ATRASADO);
+		// //vooTeste.getRotaFinal(); Não Posso pois Voo não encherga as filhas
+		// System.out.println("#Testando Voo/VooEscalas#\n" +
+		// vooTeste.toString()+"\n");
+		// //Porém o toString printa o toString do VooEscalas por causa do
+		// @Override
+		//
+		// VooEscalas vooEscalasTeste = new VooEscalas(rota1, localDateTime1,
+		// duracao1, rota2);
+		// vooEscalasTeste.setStatus(Status.ATRASADO);
+		// System.out.println("#Testando VooEscalas/VooEscalas#\n" +
+		// vooEscalasTeste.toString()+"\n");
+		// //tenho acesso direto aos métodos da classe vooEscalasTeste
+		//
+		//
+		// ArrayList<Rota> escalas = new ArrayList<>();
+		// escalas.add(rota1);
+		// escalas.add(rota2);
+		// escalas.add(rota3);
+		// VooVariasEscalas vooVariasEscalasTeste = new VooVariasEscalas(rota1,
+		// localDateTime1, duracao1, escalas);
+		// vooVariasEscalasTeste.setStatus(Status.ATRASADO);
+		// System.out.println("#Testando VooVariasEscalas/VooVariasEscalas#\n" +
+		// vooVariasEscalasTeste.toString()+"\n");
+
 		// ##########################################################################################################
 		// TESTANDO O GEO DISTANCIA
+
+		System.out.print("\n\n### TESTANDO O GEO DISTANCIA ### \n\n");
+		double distancia = geo1.distancia(geo1, geo2);
+		System.out.println("A distancia entra POA e GRU é de: " + distancia);
+		System.out.println("A duracao do voo1 POA - GRU é: " + voo1.getDuracao());
+
+		VooEscalas vooE1 = new VooEscalas(localDateTime1);
+		vooE1.adicionarRotas(rota2);
+		vooE1.adicionarRotas(rota4);
+
+		System.out.println("A duração do voo " + vooE1.toString() + vooE1.getDuracao());
+
+		System.out.println("/////////////////TESTANDO ORDENAÇÃO/////////////////");
+
+		for (Rota r : listaRotas) {
+
+			System.out.println(r.getCia().getNome());
+
+		}
 		
-			System.out.print("\n\n### TESTANDO O GEO DISTANCIA ### \n\n");
-			double distancia = geo1.distancia(geo1, geo2);
-			System.out.println("A distancia entra POA e GRU é de: "+ distancia);
-			System.out.println("A duracao do voo1 POA - GRU é: "+voo1.getDuracao());
-			
-			VooEscalas vooE1 = new VooEscalas(localDateTime1);
-			vooE1.adicionarRotas(rota2);
-			vooE1.adicionarRotas(rota4);
-			
-		    System.out.println("A duração do voo " + vooE1.toString() +  vooE1.getDuracao());
-			
-			
-			
-		
+		System.out.println();
+
+		for (Aeroporto aero : listaAeroporto) {
+
+			System.out.println(aero.getNome());
+		}
+
 	}
 
 }

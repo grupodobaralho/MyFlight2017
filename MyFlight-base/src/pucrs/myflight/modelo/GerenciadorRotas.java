@@ -1,6 +1,7 @@
 package pucrs.myflight.modelo;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class GerenciadorRotas {
 
@@ -30,6 +31,12 @@ public class GerenciadorRotas {
 				return r;
 		}
 		return null;
+	}
+	
+	public void ordenaPorCiaAerea() { 
+		
+		Collections.sort(rotas);
+		
 	}
 
 }
