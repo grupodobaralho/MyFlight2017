@@ -47,12 +47,12 @@ public class GerenciadorRotas {
 	}
 
 	public void ordenaOrigemCia() {
-//		rotas.sort( (r1,r2) -> (!r1.getOrigem().getNome().equals(r2.getOrigem().getNome()))    ?
-//		                          r1.getOrigem().getNome().compareTo(r2.getOrigem().getNome()) :
-//		                          r1.getCia().getNome().compareTo(r2.getCia().getNome())    );
-//		((Rota r1, Rota r2) -> {
+		rotas.sort( (r1,r2) -> (!r1.getOrigem().getNome().equals(r2.getOrigem().getNome()))    ?
+		                          r1.getOrigem().getNome().compareTo(r2.getOrigem().getNome()) :
+		                          r1.getCia().getNome().compareTo(r2.getCia().getNome())    );
+//		rotas.sort((Rota r1, Rota r2) -> {
 //			// posso fazer compareTo == 0?
-//			if (r1.get) {
+//			if (r1.getOrigem().getNome().equals(r2.getOrigem().getNome()) {
 //				r1.getCia().getNome().compareTo(r2.getCia().getNome());
 //			} else {
 //				r1.getCia().getNome().compareTo(r2.getCia().getNome());

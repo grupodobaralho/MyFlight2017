@@ -34,6 +34,6 @@ public abstract class Voo {
 
 	@Override
 	public String toString() {
-		return "Voo [datahora=" + datahora + ", status=" + status + "]\n";
+		return "Voo [datahora=" + datahora + ", status=" + status + " Duracao= "+ getDuracao()+"]\n";
 	}
 }

@@ -106,9 +106,9 @@ public class App {
 		LocalDateTime localDateTime3 = LocalDateTime.of(2016, 8, 15, 12, 0);
 		LocalDateTime localDateTime4 = LocalDateTime.of(2017, 7, 23, 1, 0);
 
-		Duration duracao1 = Duration.ofMinutes(90);
-		Duration duracao2 = Duration.ofMinutes(120);
-		Duration duracao3 = Duration.ofMinutes(620);
+//		Duration duracao1 = Duration.ofMinutes(90);
+//		Duration duracao2 = Duration.ofMinutes(120);
+//		Duration duracao3 = Duration.ofMinutes(620);		
 
 		VooDireto voo1 = new VooDireto(localDateTime1, rota2);
 		voo1.setStatus(Status.ATRASADO);
@@ -118,11 +118,14 @@ public class App {
 		voo3.setStatus(Status.CANCELADO);
 		VooDireto voo4 = new VooDireto(localDateTime4, rota5);
 		voo4.setStatus(Status.CONFIRMADO);
+		VooDireto voo5 = new VooDireto(localDateTime1, rota5);
+		voo4.setStatus(Status.CONFIRMADO);
 
 		gerVoos.adicionar(voo1);
 		gerVoos.adicionar(voo2);
 		gerVoos.adicionar(voo3);
 		gerVoos.adicionar(voo4);
+		gerVoos.adicionar(voo5);
 
 		// ##########################################################################################################
 
@@ -283,7 +286,7 @@ public class App {
 		    System.out.println("A duração do voo " + vooE1.toString() +  vooE1.getDuracao());
 			
 		// ##########################################################################################################
-		// TESTANDO O COMPARABLE
+		// TESTANDO O COMPARABLE EX 4 - 03 INTERFACES
 		    
 		    System.out.print("\n\n### TESTANDO O COMPARABLE ### \n\n");
 			
@@ -293,13 +296,45 @@ public class App {
 			System.out.println(rota3.compareTo(rota2));
 			
 		// ##########################################################################################################
-		// TESTANDO O COMPARABLE
-			    
-			System.out.print("\n\n### TESTANDO O COMPARATOR ### \n\n");
-			System.out.println(gerRotas.listarTodas().toString());
+		// TESTANDO O COMPARATOR EX 1 - 04 INTERFACES		    
+			
+			System.out.print("\n\n### TESTANDO O COMPARATOR EXERCÍCIO 1 - ### \n\n");			
+			System.out.print("Antes de Ordenar:");
+			
+			System.out.println(gerRotas.listarTodas().toString());			
 			gerRotas.ordenaCia();
-			System.out.println("\n\nApos ordenar:\n\n");
+			System.out.println("\n\nApos ordenar por Companhia:\n\n");
 			System.out.println(gerRotas.listarTodas().toString());
+			
+			System.out.println("\n\nApos ordenar por Nome do Aeroporto de Origem:\n\n");
+			gerRotas.ordenaOrigem();
+			System.out.println(gerRotas.listarTodas().toString());
+			
+			System.out.println("\n\nApos ordenar por Origem Cia:\n\n");
+			gerRotas.ordenaOrigemCia();
+			System.out.println(gerRotas.listarTodas().toString());
+			
+			// ##########################################################################################################
+			// TESTANDO O COMPARATOR EX 2 - 04 INTERFACES	
+			
+				System.out.print("\n\n### TESTANDO O COMPARATOR EXERCÍCIO 2 - ### \n\n");
+				
+				System.out.print("Antes de Ordenar:");
+				System.out.println(gerVoos.listarTodos().toString());			
+				gerVoos.ordenaDataHora();
+				System.out.println("\n\nApos ordenar por DataHora:\n\n");
+				System.out.println(gerVoos.listarTodos().toString());				
+				
+				System.out.println(gerVoos.listarTodos().toString());			
+				gerVoos.ordenaDataHoraDuracao();
+				System.out.println("\n\nApos ordenar por DataHora e desempata por Duracao:\n\n");
+				System.out.println(gerVoos.listarTodos().toString());
+				
+				
+			
+			
+			
+			
 			
 		
 	}
