@@ -63,10 +63,10 @@ public class App {
 		// (latitude e longitude):
 
 		Geo geo1 = new Geo(-29.9939, -51.1711);
-		Geo geo2 = new Geo(-23.4356, -46.4731);
+		Geo geo2 = new Geo(-23.4356, -46.4731);		
 		Geo geo3 = new Geo(38.7742, -9.1342);
 		Geo geo4 = new Geo(25.7933, -80.2906);
-		Geo geo5 = new Geo(-20.2566, -40.2861);
+		Geo geo5 = new Geo(-20.2566, -40.2861);		
 
 		Aeroporto poa = new Aeroporto("POA", "Salgado Filho Intl Apt", geo1);
 		Aeroporto gru = new Aeroporto("GRU", "São Paulo Guarulhos Intl Apt", geo2);
@@ -106,23 +106,26 @@ public class App {
 		LocalDateTime localDateTime3 = LocalDateTime.of(2016, 8, 15, 12, 0);
 		LocalDateTime localDateTime4 = LocalDateTime.of(2017, 7, 23, 1, 0);
 
-		Duration duracao1 = Duration.ofMinutes(90);
-		Duration duracao2 = Duration.ofMinutes(120);
-		Duration duracao3 = Duration.ofMinutes(620);
+//		Duration duracao1 = Duration.ofMinutes(90);
+//		Duration duracao2 = Duration.ofMinutes(120);
+//		Duration duracao3 = Duration.ofMinutes(620);		
 
-		Voo voo1 = new Voo(rota2, localDateTime1, duracao1);
+		VooDireto voo1 = new VooDireto(localDateTime1, rota2);
 		voo1.setStatus(Status.ATRASADO);
-		Voo voo2 = new Voo(rota4, localDateTime2, duracao2);
+		VooDireto voo2 = new VooDireto(localDateTime2, rota4);
 		voo2.setStatus(Status.CONFIRMADO);
-		Voo voo3 = new Voo(rota3, localDateTime3, duracao2);
+		VooDireto voo3 = new VooDireto(localDateTime3, rota3);
 		voo3.setStatus(Status.CANCELADO);
-		Voo voo4 = new Voo(rota5, localDateTime4, duracao3);
+		VooDireto voo4 = new VooDireto(localDateTime4, rota5);
+		voo4.setStatus(Status.CONFIRMADO);
+		VooDireto voo5 = new VooDireto(localDateTime1, rota5);
 		voo4.setStatus(Status.CONFIRMADO);
 
 		gerVoos.adicionar(voo1);
 		gerVoos.adicionar(voo2);
 		gerVoos.adicionar(voo3);
 		gerVoos.adicionar(voo4);
+		gerVoos.adicionar(voo5);
 
 		// ##########################################################################################################
 
@@ -237,9 +240,103 @@ public class App {
 	    double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 	    double distance = R * c * 1000; // convert to meters
 	    distance = Math.pow(distance, 2) + Math.pow(0, 2);	    
-//		
-		System.out.println("A distancia do:\n"+um.getNome()+"\npara o :\n"+dois.getNome()+
+		
+		System.out.println("A distancia do:    "+um.getNome()+"\npara o:    "+dois.getNome()+
 							"\ne de: "+ (int)Math.sqrt(distance) + " metros");
+		
+		// ##########################################################################################################
+		// EXERCÍCIOS DE HERANCA
+//		
+//		System.out.print("\n\n### EXERCICIO DE HERANCA ### \n\n");
+//		System.out.println("2 - A modelagem não esta legal... podiamos usar Voo como classe estatica\n");
+//		
+//		Voo vooTeste = new VooEscalas(rota1, localDateTime1, duracao1, rota2);
+//		vooTeste.setStatus(Status.ATRASADO);
+//		//vooTeste.getRotaFinal(); Não Posso pois Voo não encherga as filhas
+//		System.out.println("#Testando Voo/VooEscalas#\n" + vooTeste.toString()+"\n"); 
+//		//Porém o toString printa  o toString do VooEscalas por causa do @Override
+//		
+//		VooEscalas vooEscalasTeste = new VooEscalas(rota1, localDateTime1, duracao1, rota2);
+//		vooEscalasTeste.setStatus(Status.ATRASADO);
+//		System.out.println("#Testando VooEscalas/VooEscalas#\n" + vooEscalasTeste.toString()+"\n"); 
+//		//tenho acesso direto aos métodos da classe vooEscalasTeste
+//		
+//		
+//		ArrayList<Rota> escalas = new ArrayList<>();
+//		escalas.add(rota1);
+//		escalas.add(rota2);
+//		escalas.add(rota3);
+//		VooVariasEscalas vooVariasEscalasTeste = new VooVariasEscalas(rota1, localDateTime1, duracao1, escalas);
+//		vooVariasEscalasTeste.setStatus(Status.ATRASADO);
+//		System.out.println("#Testando VooVariasEscalas/VooVariasEscalas#\n" + vooVariasEscalasTeste.toString()+"\n"); 
+		
+		
+		// ##########################################################################################################
+		// TESTANDO O GEO DISTANCIA
+		
+			System.out.print("\n\n### TESTANDO O GEO DISTANCIA ### \n\n");
+			double distancia = geo1.distancia(geo1, geo2);
+			System.out.println("A distancia entra POA e GRU é de: "+ distancia);
+			System.out.println("A duracao do voo1 POA - GRU é: "+voo1.getDuracao());
+			
+			VooEscalas vooE1 = new VooEscalas(localDateTime1);
+			vooE1.adicionarRotas(rota2);
+			vooE1.adicionarRotas(rota4);
+			
+		    System.out.println("A duração do voo " + vooE1.toString() +  vooE1.getDuracao());
+			
+		// ##########################################################################################################
+		// TESTANDO O COMPARABLE EX 4 - 03 INTERFACES
+		    
+		    System.out.print("\n\n### TESTANDO O COMPARABLE ### \n\n");
+			
+			System.out.println(rota1.compareTo(rota2));
+			System.out.println(rota2.compareTo(rota1));
+			System.out.println(rota1.compareTo(rota3));
+			System.out.println(rota3.compareTo(rota2));
+			
+		// ##########################################################################################################
+		// TESTANDO O COMPARATOR EX 1 - 04 INTERFACES		    
+			
+			System.out.print("\n\n### TESTANDO O COMPARATOR EXERCÍCIO 1 - ### \n\n");			
+			System.out.print("Antes de Ordenar:");
+			
+			System.out.println(gerRotas.listarTodas().toString());			
+			gerRotas.ordenaCia();
+			System.out.println("\n\nApos ordenar por Companhia:\n\n");
+			System.out.println(gerRotas.listarTodas().toString());
+			
+			System.out.println("\n\nApos ordenar por Nome do Aeroporto de Origem:\n\n");
+			gerRotas.ordenaOrigem();
+			System.out.println(gerRotas.listarTodas().toString());
+			
+			System.out.println("\n\nApos ordenar por Origem Cia:\n\n");
+			gerRotas.ordenaOrigemCia();
+			System.out.println(gerRotas.listarTodas().toString());
+			
+			// ##########################################################################################################
+			// TESTANDO O COMPARATOR EX 2 - 04 INTERFACES	
+			
+				System.out.print("\n\n### TESTANDO O COMPARATOR EXERCÍCIO 2 - ### \n\n");
+				
+				System.out.print("Antes de Ordenar:");
+				System.out.println(gerVoos.listarTodos().toString());			
+				gerVoos.ordenaDataHora();
+				System.out.println("\n\nApos ordenar por DataHora:\n\n");
+				System.out.println(gerVoos.listarTodos().toString());				
+				
+				System.out.println(gerVoos.listarTodos().toString());			
+				gerVoos.ordenaDataHoraDuracao();
+				System.out.println("\n\nApos ordenar por DataHora e desempata por Duracao:\n\n");
+				System.out.println(gerVoos.listarTodos().toString());
+				
+				
+			
+			
+			
+			
+			
+		
 	}
 
 }
