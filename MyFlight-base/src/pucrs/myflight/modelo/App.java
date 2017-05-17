@@ -3,6 +3,7 @@ package pucrs.myflight.modelo;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 
 import pucrs.myflight.modelo.Voo.Status;
@@ -99,7 +100,7 @@ public class App {
 		gerRotas.adicionar(rota4);
 		gerRotas.adicionar(rota5);
 
-		gerRotas.ordenaPorCiaAerea();
+		//gerRotas.ordenaPorCiaAerea();
 
 		// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 		// Voos
@@ -294,12 +295,16 @@ public class App {
 		System.out.println("A duração do voo " + vooE1.toString() + vooE1.getDuracao());
 
 		System.out.println("/////////////////TESTANDO ORDENAÇÃO/////////////////");
-
+		
+		//gerRotas.ordenaPorCiaAerea();
+		Collections.sort(listaRotas);
+		System.out.println("ordenado pelo nome da cia aérea");
 		for (Rota r : listaRotas) {
 
 			System.out.println(r.getCia().getNome());
 
 		}
+		
 		
 		System.out.println();
 
