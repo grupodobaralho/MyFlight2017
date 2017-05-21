@@ -1,6 +1,9 @@
 package pucrs.myflight.modelo;
 
-import java.io.BufferedReader;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -8,6 +11,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
+import com.cedarsoftware.util.io.JsonReader;
+import com.cedarsoftware.util.io.JsonWriter;
 
 public class GerenciadorCias {
 
@@ -59,6 +64,18 @@ public class GerenciadorCias {
 			  System.err.format("Erro de E/S: %s%n", x);
 			}
 		
+	}
+	
+	public void gravaJSON() throws IOException {
+	    try (JsonWriter writer = new JsonWriter(new BufferedOutputStream(new FileOutputStream("Files/airlines.json")))) {
+		  writer.write(empresas);
+	    }
+	}
+	
+	public void carregaJSON() throws IOException {
+	    try (JsonReader reader = new JsonReader(new BufferedInputStream(new FileInputStream("Files/airlines.json")))) {
+	        empresas = (ArrayList<CiaAerea>) reader.readObject();
+	    }
 	}
 
 }

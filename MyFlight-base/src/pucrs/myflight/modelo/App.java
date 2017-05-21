@@ -1,5 +1,6 @@
 package pucrs.myflight.modelo;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class App {
 		GerenciadorRotas gerRotas = new GerenciadorRotas();
 		GerenciadorVoos gerVoos = new GerenciadorVoos();
 
+		/**
 		// **********************************************************************************************************
 		// Companhias Aéreas
 		// Cada companhia possui um código e um nome:
@@ -37,7 +39,7 @@ public class App {
 		gerCias.adicionar(azul);
 		gerCias.adicionar(american);
 		gerCias.adicionar(airfrance);
-
+**/
 		// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 		// Aeronaves
 		// As aeronaves são identificadas por um código, uma descrição e uma
@@ -85,11 +87,11 @@ public class App {
 		// Uma rota é identificada por uma companhia aérea, aeroporto de origem,
 		// aeroporto de destino e aeronave:
 
-		Rota rota1 = new Rota(gol, gru, poa, boeing733_300);
-		Rota rota2 = new Rota(gol, poa, gru, boeing733_300);
-		Rota rota3 = new Rota(tap, mia, lis, airbusA380);
-		Rota rota4 = new Rota(latam, gru, mia, boeing767_400);
-		Rota rota5 = new Rota(american, vix, mia, boeing747_8);
+		Rota rota1 = new Rota(gerCias.buscarPorCodigo("2B"), gru, poa, boeing733_300);
+		Rota rota2 = new Rota(gerCias.buscarPorCodigo("2G"), poa, gru, boeing733_300);
+		Rota rota3 = new Rota(gerCias.buscarPorCodigo("2I"), mia, lis, airbusA380);
+		Rota rota4 = new Rota(gerCias.buscarPorCodigo("2J"), gru, mia, boeing767_400);
+		Rota rota5 = new Rota(gerCias.buscarPorCodigo("2K"), vix, mia, boeing747_8);
 
 		gerRotas.adicionar(rota1);
 		gerRotas.adicionar(rota2);
@@ -129,6 +131,39 @@ public class App {
 
 		// ##########################################################################################################
 
+		try {
+			gerCias.gravaJSON();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			gerCias.carregaJSON();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ArrayList<CiaAerea> a = gerCias.listarTodas();		
+		for(CiaAerea c : a){
+			System.out.println(c.toString());
+		}
+				
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		/**
 		// ATIVIDADE - EXERCÍCIO PRÁTICO (1)
 
 		// 1-Listar os dados de todos os vôos de um determinado aeroporto, a
@@ -329,13 +364,8 @@ public class App {
 				gerVoos.ordenaDataHoraDuracao();
 				System.out.println("\n\nApos ordenar por DataHora e desempata por Duracao:\n\n");
 				System.out.println(gerVoos.listarTodos().toString());
-				
-				
 			
-			
-			
-			
-			
+**/
 		
 	}
 
