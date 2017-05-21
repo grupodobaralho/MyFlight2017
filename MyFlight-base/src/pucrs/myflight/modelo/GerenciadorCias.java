@@ -7,15 +7,15 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class GerenciadorCias {
 
-	private ArrayList<CiaAerea> empresas;
-	private ArrayList<String> listaEmpresas;
+	private ArrayList<CiaAerea> empresas;	
 
 	public GerenciadorCias() {
-		empresas = new ArrayList<>();
-		listaEmpresas = new ArrayList<>();
+		empresas = new ArrayList<>();	
+		carregaDados();
 	}
 
 	public void adicionar(CiaAerea cia) {
@@ -42,16 +42,17 @@ public class GerenciadorCias {
 		return null;
 	}
 
-	public void carregaDados() throws IOException {
-		Path path = Paths.get("Files/airlines.dat");
-		
-		try (BufferedReader reader = Files.newBufferedReader(path, Charset.forName("utf8"))) {
-			  String line = null;
-			 // reader.readLine()
-			  while ((line = reader.readLine()) != null) {
-			    System.out.println("Linha: "+line);
-			    //String[] dados = linha.split(";");
-			    //CiaAerea nova = new CiaAerea(dados[0], dados[1]);
+	public void carregaDados() {
+		Path path = Paths.get("Files/airlines.dat");	
+		try (Scanner sc = new Scanner(Files.newBufferedReader(path, Charset.forName("utf8")))) {
+			sc.useDelimiter("[;\n]"); // separadores: ; e nova linha
+			String header = sc.nextLine(); // pula cabeçalho
+			String cod, nome;
+			  while ((sc.hasNext())) {	
+				  cod = sc.next();
+				  nome = sc.next();
+				  CiaAerea cia = new CiaAerea(cod, nome);
+				  empresas.add(cia);
 			  }
 			}
 			catch (IOException x) {
